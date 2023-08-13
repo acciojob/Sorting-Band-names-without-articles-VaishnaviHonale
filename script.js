@@ -1,5 +1,5 @@
 //your code here
-let touristSpots = ['Tajmahal', 'Victoria Memorial', 'The Virupaksha Temple'];
+let arr = ['Tajmahal', 'Victoria Memorial', 'The Virupaksha Temple'];
 let updatedList=arr.map((element)=>
 	{
 		let words=element.split(" ");
