@@ -1,23 +1,18 @@
-// Your array of band names
-let bandNames = ['The Virupaksha Temple', 'Victoria Memorial', 'Tajmaha];
+const bands = ['The Virupaksha Temple', 'Victoria Memorial', 'Tajmahal'];
 
-// Function to remove articles from band names
-function removeArticle(name) {
-    return name.replace(/^(a |an |the )/i, '').trim();
+// Define the strip function to remove common words from band names
+function strip(word) {
+const regex = /^(a |the |an )/i;
+return word.replace(regex, '').trim();
 }
 
-// Sort band names without articles
-bandNames.sort((a, b) => removeArticle(a).localeCompare(removeArticle(b)));
+// Sort the bands array using the strip function to ignore common words
+const sortedBands = bands.sort((a, b) => (strip(a) > strip(b)) ? 1 : -1);
 
-// Get the ul element by its id
-let ulElement = document.getElementById('band');
-
-// Clear any existing content
-ulElement.innerHTML = '';
-
-// Populate ul with sorted band names
-bandNames.forEach(name => {
-    let liElement = document.createElement('li');
-    liElement.textContent = name;
-    ulElement.appendChild(liElement);
+// Update the DOM with the sorted band names
+const bandList = document.getElementById('bands');
+sortedBands.forEach(band => {
+const listItem = document.createElement('li');
+listItem.textContent = band;
+bandList.appendChild(listItem);
 });
